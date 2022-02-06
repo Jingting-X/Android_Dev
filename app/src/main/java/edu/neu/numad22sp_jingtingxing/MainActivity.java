@@ -16,7 +16,7 @@ import org.w3c.dom.Text;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /* about me */
+        /* A1 About Me */
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,7 +25,7 @@ import org.w3c.dom.Text;
             }
         });
 
-
+        /* A3 Clicky */
         TextView textContent = (TextView) findViewById(R.id.textView1);
         textContent.setText("Pressed: -");
 
