@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        android:textSize="35dp"
         android:textColor="#2196F3"
+        android:textSize="35dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonClicky"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -39,5 +39,17 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/buttonLinkCollector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Link Collector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonClicky" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

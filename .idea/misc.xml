@@ -7,7 +7,11 @@
         <entry key="app/src/main/res/drawable/ic_launcher_01_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_clicky.xml" value="0.21875" />
+        <entry key="app/src/main/res/layout/activity_link_collector.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28911285400390635" />
+        <entry key="app/src/main/res/layout/item.xml" value="0.23659475575322686" />
+        <entry key="app/src/main/res/layout/layout.xml" value="0.16168478260869565" />
+        <entry key="app/src/main/res/layout/row.xml" value="0.3398025512695313" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.201" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_01.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_01_round.xml" value="0.1" />

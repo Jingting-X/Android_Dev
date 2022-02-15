@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NUMAD22Sp_JingtingXing</string>
+    <string name="Add">Add</string>
+    <string name="Cancel">Cancel</string>
+    <string name="link_add_success">Link added successfully</string>
+    <string name="link_invalid">Invalid url. Please provide a valid url.</string>
 </resources>
