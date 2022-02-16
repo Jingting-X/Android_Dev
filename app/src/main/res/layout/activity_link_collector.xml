@@ -19,6 +19,6 @@
         android:layout_height="wrap_content"
         app:tint="#fff"
         android:layout_margin="21dp"
-        android:contentDescription="TODO" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </LinearLayout>

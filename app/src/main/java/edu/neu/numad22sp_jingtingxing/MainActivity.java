@@ -19,7 +19,10 @@ import android.widget.Toast;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Jingting Xing xing.jin@northeastern.edu", Toast.LENGTH_SHORT).show();
+//                A1 Toast
+//                Toast.makeText(MainActivity.this, "Jingting Xing xing.jin@northeastern.edu", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AboutMeActivity.class);
+                startActivity(intent);
             }
         });
 

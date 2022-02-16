@@ -20,82 +20,30 @@ import java.util.ArrayList;
 
 public class LinkCollectorActivity extends AppCompatActivity {
 
-    ArrayList<LinkModel> links;
-    LinkAdapter adapter;
-    FloatingActionButton btnFabAdd;
-    RecyclerView recyclerView;
-    EditText linkName;
-    EditText linkUrl;
-    AlertDialog inputAlertDialog;
+    private ArrayList<LinkModel> links;
+    private LinkAdapter adapter;
+    private FloatingActionButton btnFabAdd;
+    private RecyclerView recyclerView;
+    private EditText linkName;
+    private EditText linkUrl;
+    private AlertDialog inputAlertDialog;
+    private static final String KEY_OF_INSTANCE = "KEY_OF_INSTANCE";
+    private static final String NUMBER_OF_ITEMS = "NUMBER_OF_ITEMS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link_collector);
 
-        recyclerView = findViewById(R.id.recyclerLink);
+        links = new ArrayList<>();
+        init(savedInstanceState);
+
         btnFabAdd = findViewById(R.id.btnFabAdd);
         btnFabAdd.setOnClickListener(v -> addLink());
-        links = new ArrayList<>();
-
-
-        recyclerView.setHasFixedSize(true);
-        adapter = new LinkAdapter(this, links);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(layoutManager);
-
+        createRecyclerView();
         createInputAlertDialog();
+
         adapter.setOnLinkClickListener(position -> links.get(position).onLinkUnitClicked(this));
-
-//        btnFabAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Dialog dialog = new Dialog(LinkCollectorActivity.this);
-//                dialog.setContentView(R.layout.item);
-//
-//                EditText edtName = dialog.findViewById(R.id.edtName);
-//                EditText edtUrl = dialog.findViewById(R.id.edtUrl);
-//                Button btnAddLink = dialog.findViewById(R.id.btnAddLink);
-//
-//                btnAddLink.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        String linkName = "";
-//                        String linkUrl = "";
-//
-//                        if (!edtName.getText().toString().equals("")) {
-//                            linkName = edtName.getText().toString();
-//                        } else {
-//                            Toast.makeText(LinkCollectorActivity.this, "Please enter link name!", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                        if (!edtUrl.getText().toString().equals("")) {
-//                            linkUrl = edtUrl.getText().toString();
-//                        } else {
-//                            Toast.makeText(LinkCollectorActivity.this, "Please enter link!", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                        links.add(new LinkModel(linkName, linkUrl));
-//
-//                        adapter.notifyItemInserted(links.size() - 1);
-//
-//                        recyclerView.scrollToPosition(links.size() - 1);
-//
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                dialog.show();
-//            }
-//        });
-
-//        links.add(new LinkModel("www", "123"));
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        adapter = new LinkAdapter(this, links);
-        recyclerView.setAdapter(adapter);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -115,9 +63,18 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
     public void addLink() {
         linkName.getText().clear();
-        linkUrl.getText().clear();
+        linkUrl.setText("http://");
         linkName.requestFocus();
         inputAlertDialog.show();
+    }
+
+    public void createRecyclerView() {
+        recyclerView = findViewById(R.id.recyclerLink);
+        recyclerView.setHasFixedSize(true);
+        adapter = new LinkAdapter(this, links);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     public void createInputAlertDialog() {
@@ -138,9 +95,9 @@ public class LinkCollectorActivity extends AppCompatActivity {
                             if (link.isValid()) {
                                 links.add(0, link);
                                 adapter.notifyDataSetChanged();
-                                Snackbar.make(recyclerView, getString(R.string.link_add_success), Snackbar.LENGTH_LONG).show();
+                                Snackbar.make(recyclerView, "Add link successfully!", Snackbar.LENGTH_LONG).show();
                             } else {
-                                Snackbar.make(recyclerView, getString(R.string.link_invalid), Snackbar.LENGTH_LONG).show();
+                                Snackbar.make(recyclerView, "Invalid input. Please check.", Snackbar.LENGTH_LONG).show();
                             }
                         })
                 .setNegativeButton(getString(R.string.Cancel),
@@ -148,4 +105,48 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
         inputAlertDialog = alertDialogBuilder.create();
     }
+
+    // Handling Orientation Changes on Android
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        int size = links == null ? 0 : links.size();
+        outState.putInt(NUMBER_OF_ITEMS, size);
+
+        // Need to generate unique key for each item
+        // This is only a possible way to do, please find your own way to generate the key
+        for (int i = 0; i < size; i++) {
+            // put linkName information id into instance
+            outState.putString(KEY_OF_INSTANCE + i + "0", links.get(i).getLinkName());
+            // put linkURL information into instance
+            outState.putString(KEY_OF_INSTANCE + i + "1", links.get(i).getLinkUrl());
+        }
+        super.onSaveInstanceState(outState);
+    }
+
+    private void init(Bundle savedInstanceState) {
+        initialItemData(savedInstanceState);
+        createRecyclerView();
+    }
+
+    private void initialItemData(Bundle savedInstanceState) {
+        // Not the first time to open this Activity
+        if (savedInstanceState != null && savedInstanceState.containsKey(NUMBER_OF_ITEMS)) {
+            if (links == null || links.size() == 0) {
+                int size = savedInstanceState.getInt(NUMBER_OF_ITEMS);
+
+                // Retrieve keys we stored in the instance
+                for (int i = 0; i < size; i++) {
+                    String linkName = savedInstanceState.getString(KEY_OF_INSTANCE + i + "0");
+                    String linkURL = savedInstanceState.getString(KEY_OF_INSTANCE + i + "1");
+
+                    LinkModel model = new LinkModel(linkName, linkURL);
+
+                    links.add(model);
+                }
+            }
+        }
+
+    }
+
 }
+
