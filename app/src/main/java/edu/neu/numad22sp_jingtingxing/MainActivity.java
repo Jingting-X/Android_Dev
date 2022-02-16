@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
  public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +19,10 @@ import org.w3c.dom.Text;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Jingting Xing xing.jin@northeastern.edu", Toast.LENGTH_SHORT).show();
+//                A1 Toast
+//                Toast.makeText(MainActivity.this, "Jingting Xing xing.jin@northeastern.edu", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AboutMeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -31,7 +31,18 @@ import org.w3c.dom.Text;
         btnClicky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, clicky.class);
+                Intent intent = new Intent(MainActivity.this, ClickyActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /* A4 Link Collector */
+        Button btnLinkCollector = (Button) findViewById(R.id.buttonLinkCollector);
+        btnLinkCollector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,
+                        LinkCollectorActivity.class);
                 startActivity(intent);
             }
         });
