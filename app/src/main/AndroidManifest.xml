@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.neu.numad22sp_jingtingxing">
 
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_01"
@@ -9,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_01_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD22Sp_JingtingXing">
+        <activity
+            android:name=".LocatorActivity"
+            android:exported="false" />
         <activity
             android:name=".AboutMeActivity"
             android:exported="false" />

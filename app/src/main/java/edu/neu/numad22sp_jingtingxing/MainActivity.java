@@ -47,5 +47,15 @@ import android.widget.Toast;
             }
         });
 
+        /* A5 Locator */
+        Button btnLocator = findViewById(R.id.btnLocator);
+        btnLocator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LocatorActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
