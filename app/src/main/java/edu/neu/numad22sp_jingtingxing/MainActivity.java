@@ -57,5 +57,15 @@ import android.widget.Toast;
             }
         });
 
+        /* A6 Web Service */
+        Button btnService = findViewById(R.id.btnService);
+        btnService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, WebServiceActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
