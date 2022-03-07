@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:onClick="getNewCasesCallback"
         android:text="Get Cases" />
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:visibility="invisible"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="135dp"/>
+        android:layout_marginTop="110dp"/>
 
     <LinearLayout
         android:layout_width="300dp"
@@ -39,7 +39,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
@@ -82,15 +82,13 @@
                     <TextView
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
-                        android:text="New Case"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:text="New Cases"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/textView_confirmedCases"
                         android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold" />
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
@@ -102,18 +100,67 @@
                     <TextView
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
-                        android:text="New Death"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:text="New Deaths"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/textView_deathCases"
                         android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold" />
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:text="Cases per 1M"
+                        android:textColor="@color/black"  />
+
+                    <TextView
+                        android:id="@+id/textView_casesOneMillion"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:text="Deaths per 1M"
+                        android:textColor="@color/black"  />
+
+                    <TextView
+                        android:id="@+id/textView_deathsOneMillion"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        android:text="Update date" />
+
+                    <TextView
+                        android:id="@+id/textView_date"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
             </LinearLayout>
 
